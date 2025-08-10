@@ -1,1 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ai sidebar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="top">
+        <div id="section-container">
+            <div class="section selected" id="section-intelligence">
+                <span><img class='icon' src="./assets/ai-icon.svg" alt="🧠"></span>
+                <p>intelligence</p>
+            </div>
+            <div class="section unselected" id="section-translate">
+                <span><img class='icon' src="./assets/translate-icon.svg" alt="🌐"></span>
+                <p>translate</p>
+            </div>
+            <div class="section unselected" id="section-settings">
+                <span><img class='icon' src="./assets/settings-icon.svg" alt="⚙️"></span>
+                <p>settings</p>
+            </div>
+        </div>
+    </div>
 
+    <div id="main-container">
+        <!-- Chat Management Sidebar -->
+        <div id="chat-sidebar" class="chat-sidebar-hidden">
+            <div class="sidebar-header">
+                <h3>Chat History</h3>
+                <div class="sidebar-actions">
+                    <button id="clear-all-chats" class="new-chat-btn" title="Clear all chats">Clear All</button>
+                    <button id="new-chat-btn" class="new-chat-btn">+ New Chat</button>
+                </div>
+            </div>
+            <div id="chat-list" class="chat-list">
+                <!-- Chat items will be populated here -->
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div id="content-wrapper">
+            <div id="content">
+                <div id="chat"></div>
+                <div id="translation" class="translate-panel" style="display:none;">
+                    <div class="translate-controls">
+                        <div class="lang-select">
+                            <label for="source-lang">From</label>
+                            <select id="source-lang">
+                                <option value="auto">Auto-detect</option>
+                                <option>English</option>
+                                <option>Spanish</option>
+                                <option>French</option>
+                                <option>German</option>
+                                <option>Chinese (Simplified)</option>
+                                <option>Japanese</option>
+                                <option>Korean</option>
+                                <option>Arabic</option>
+                                <option>Hindi</option>
+                                <option>Portuguese</option>
+                                <option>Russian</option>
+                            </select>
+                        </div>
+                        <button id="swap-langs" class="icon-btn" title="Swap languages" aria-label="Swap languages">⇄</button>
+                        <div class="lang-select">
+                            <label for="target-lang">To</label>
+                            <select id="target-lang">
+                                <option>English</option>
+                                <option selected>Spanish</option>
+                                <option>French</option>
+                                <option>German</option>
+                                <option>Chinese (Simplified)</option>
+                                <option>Japanese</option>
+                                <option>Korean</option>
+                                <option>Arabic</option>
+                                <option>Hindi</option>
+                                <option>Portuguese</option>
+                                <option>Russian</option>
+                            </select>
+                        </div>
+                        <button id="translate-btn" class="icon-btn" aria-label="Translate">Translate</button>
+                    </div>
+
+                    <div class="translate-areas">
+                        <textarea id="translate-source" placeholder="Enter text to translate..."></textarea>
+                        <div id="translate-output" class="translate-output" aria-live="polite"></div>
+                    </div>
+                </div>
+                <div id="settings" class="settings-panel" style="display:none;">
+                    <h3>API Keys</h3>
+                    <div class="settings-grid">
+                        <label for="openai-key">OpenAI API Key</label>
+                        <input type="password" id="openai-key" placeholder="sk-..." />
+
+                        <label for="mistral-key">Mistral API Key</label>
+                        <input type="password" id="mistral-key" placeholder="mistral-..." />
+
+                        <label for="gemini-key">Gemini API Key</label>
+                        <input type="password" id="gemini-key" placeholder="AIza..." />
+                    </div>
+                    <div class="settings-actions">
+                        <button id="save-keys" class="new-chat-btn">Save</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="input">
+                <div id="input-box">
+                    <div class="input-row-top">
+                        <input type="text" id="message" placeholder="Type your message here...">
+                    </div>
+                    <div class="input-row-bottom">
+                        <button id="sidebar-toggle" class="sidebar-toggle-btn icon-btn" aria-label="Toggle sidebar">
+                            <span class="sr-only">Toggle sidebar</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                <line x1="3" y1="12" x2="21" y2="12"></line>
+                                <line x1="3" y1="18" x2="21" y2="18"></line>
+                            </svg>
+                        </button>
+                        <div class="provider-select">
+                            <img id="provider-icon" src="./assets/gpt-icon.svg" alt="provider" />
+                            <select id="ai-provider" aria-label="AI provider">
+                                <option value="openai">gpt</option>
+                                <option value="mistral">mistral</option>
+                                <option value="gemini">gemini</option>
+                            </select>
+                        </div>
+                        <button id="send-button" class="icon-btn" aria-label="Send message">
+                            <span class="sr-only">Send</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github-dark.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/highlight.min.js"></script>
+    <script src="config.js"></script>
+    <script src="ai-services.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
