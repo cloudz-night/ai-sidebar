@@ -19,6 +19,7 @@ A minimalist, fast chat and translation app with a clean sidebar UI. It supports
 ### 1) Install requirements
 
 - Node.js 18+ and npm
+- You can install Node.js from here: https://nodejs.org/en
 
 ### 2) Install dependencies
 
@@ -109,3 +110,4 @@ ai-sidebar/
 ## License
 
 MIT – Do as you wish. Please remove or rotate any demo keys before sharing.
+
