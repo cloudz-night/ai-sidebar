@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ai sidebar</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>toolbar</title>
+    <link href="https://fontseapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -108,6 +108,9 @@
 
             <div id="input">
                 <div id="input-box">
+                    <!-- File preview container -->
+                    <div id="file-preview-container" class="file-preview-container"></div>
+
                     <div class="input-row-top">
                         <input type="text" id="message" placeholder="Type your message here...">
                     </div>
@@ -120,6 +123,22 @@
                                 <line x1="3" y1="18" x2="21" y2="18"></line>
                             </svg>
                         </button>
+
+                        <!-- File upload button -->
+                        <button id="file-upload-btn" class="file-upload-btn icon-btn" aria-label="Upload file">
+                            <span class="sr-only">Upload file</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                        </button>
+
+                        <!-- Hidden file input -->
+                        <input type="file" id="file-input" multiple style="display: none;">
+
                         <div class="provider-select">
                             <img id="provider-icon" src="./assets/gpt-icon.svg" alt="provider" />
                             <select id="ai-provider" aria-label="AI provider">
@@ -150,6 +169,7 @@
     <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/highlight.min.js"></script>
     <script src="config.js"></script>
     <script src="ai-services.js"></script>
+    <script src="file-handler.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
